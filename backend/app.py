@@ -1052,4 +1052,7 @@ def health_check():
     return jsonify({'status': 'healthy'})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Allow overriding bind host/port via environment to avoid local port conflicts (e.g., VPN/IT policies).
+    port = int(os.environ.get("PORT", "5000"))
+    host = os.environ.get("HOST", "0.0.0.0")
+    app.run(host=host, debug=True, port=port)
