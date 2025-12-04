@@ -41,7 +41,11 @@ export function ModelWizardNew({ isOpen, onClose }: ModelWizardNewProps) {
   }
 
   const prevStep = () => {
-    if (step > 1) setStep(step - 1)
+    if (step > 1) {
+      setStep(step - 1)
+    } else {
+      onClose()
+    }
   }
 
   const steps = ["Model Info", "Upload Data", "Problem Type", "Select Features", "Train Model"]
